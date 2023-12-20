@@ -1,0 +1,29 @@
+﻿<h1 id="tableLabel">Market data</h1>
+
+<p>1 hour market data splitted to 1 minutes</p>
+
+<p *ngIf="!candleData"><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationangular">https://aka.ms/jspsintegrationangular</a> for more details.</em></p>
+
+<table *ngIf="candleData">
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Open Price</th>
+            <th>Close Price</th>
+            <th>Low Price</th>
+            <th>High Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let candle of candleData" 
+            [ngClass]="{ 'going-up': candle.closePrice >= candle.openPrice, 'going-down': candle.closePrice < candle.openPrice }">
+            <td>{{ candle.dateTime | date:'medium' }}</td>
+            <td>{{ candle.openPrice }}</td>
+            <td>{{ candle.closePrice }}</td>
+            <td>{{ candle.lowPrice }}</td>
+            <td>{{ candle.highPrice }}</td>
+            <td>{{ candle.quantity }}</td>
+        </tr>
+    </tbody>
+</table>

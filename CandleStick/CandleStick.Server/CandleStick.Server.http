@@ -1,0 +1,6 @@
+@CandleStick.Server_HostAddress = http://localhost:5041
+
+GET {{CandleStick.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
